@@ -22,7 +22,7 @@ public class Main2Activity extends AppCompatActivity {
     boolean inputC = false;
     boolean inputD = false;
     boolean inputP = false;
-    int resultadoInsert = 0;
+    int franklin = 0;
 
     MantenimientoMysql manto = new MantenimientoMysql();
     @Override
