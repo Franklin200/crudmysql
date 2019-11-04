@@ -12,6 +12,8 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
+    String franklin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
