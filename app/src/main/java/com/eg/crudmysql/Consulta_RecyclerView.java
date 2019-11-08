@@ -27,6 +27,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+
 public class Consulta_RecyclerView extends AppCompatActivity {
 
     //private static final String URL = "http://mjgl.com.sv/mysqlcrud/Api.php";
@@ -60,10 +63,13 @@ public class Consulta_RecyclerView extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulta__recycler_view);
+
         Toolbar toolbar = findViewById(R.id.toolbar1);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_back));
         toolbar.setTitleTextColor(getResources().getColor(R.color.mycolor1));
@@ -193,4 +199,8 @@ public class Consulta_RecyclerView extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
 }
