@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     boolean estadoEliminar = false;
 
     AlertDialog.Builder dialogo;
+    AlertDialog.Builder dialog;
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -56,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {//un listener que al pulsar, cierre la aplicacion
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            MainActivity.this.finishAffinity();
+                            //MainActivity.this.finishAffinity();
+                            finish();
                         }
                     })
                     .show();
@@ -66,18 +68,18 @@ public class MainActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_back));
         toolbar.setTitleTextColor(getResources().getColor(R.color.mycolor1));
         toolbar.setTitleMargin(0, 0, 0, 0);
         toolbar.setSubtitle("CRUD MySQL~2019");
         toolbar.setSubtitleTextColor(getResources().getColor(R.color.mycolor));
-        toolbar.setTitle("Estudiante. Flores");
+        toolbar.setTitle("Prof. Gámez");
         setSupportActionBar(toolbar);
 
         ///y esto para pantalla completa (oculta incluso la barra de estado)
@@ -118,7 +120,31 @@ public class MainActivity extends AppCompatActivity {
                     et_descripcion.setText(descripcion);
                     et_precio.setText(precio);
                     //finish();
-                }else if(senal.equals("2")){
+                }else if(senal.equals("5")){
+                    String sena = bundle.getString("senal");
+                    String id = bundle.getString("id");
+                    String nombres = bundle.getString("nombres");
+                    String apellidos = bundle.getString("apellidos");
+                    String tipo = bundle.getString("tipo");
+
+                    if(tipo.equals("1")){
+                        toolbar.setSubtitle("User: "+nombres);
+                    }
+
+
+                    dialog = new AlertDialog.Builder(MainActivity.this);
+                    dialog.setIcon(R.drawable.ic_info);
+                    dialog.setTitle("FELICIDADES!");
+                    dialog.setMessage("\nBienvenid@, " + nombres + " " + apellidos + ".\n\nSe ha identificado correctamente.");
+                    dialog.setCancelable(false);
+
+                    dialog.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialogo, int id) {
+
+                        }
+                    });
+                    dialog.show();
+
 
                 }
             }
@@ -326,12 +352,16 @@ public class MainActivity extends AppCompatActivity {
             et_descripcion.setText(null);
             et_precio.setText(null);
             return true;
-        }else if(id == R.id.action_listaArticulos){
+        }else if(id == R.id.action_listaArticulos1){
             Intent spinnerActivity = new Intent(MainActivity.this, Consulta_RecyclerView.class);
             startActivity(spinnerActivity);
             return true;
         }else if(id == R.id.action_salir){
             DialogConfirmacion();
+            return true;
+        }else if(id == R.id.action_acerca_de){
+            Intent acercar_de = new Intent(MainActivity.this, acerca_de.class);
+            startActivity(acercar_de);
             return true;
         }
 
@@ -357,8 +387,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogo, int id) {
                 /*Intent intent = new Intent(DashboardLuces.this, luces_control_sms.class);
                 startActivity(intent);*/
-                MainActivity.this.finishAffinity();
-                //MainActivity.this.finish();
+                //MainActivity.this.finishAffinity();
+                MainActivity.this.finish();
             }
         });
         dialogo.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -421,5 +451,6 @@ public class MainActivity extends AppCompatActivity {
         String precio = preferences.getString("precio","0.0");
         return precio;   //return preferences.getString("tiempo", "Sin configurar.");
     }
+
 
 }

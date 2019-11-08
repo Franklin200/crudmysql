@@ -40,6 +40,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         btnLogin.setOnClickListener(this);
     }
 
+
+
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -88,4 +90,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         etPassword.setText(null);
         etEmail.requestFocus();
     }
+
+
 }

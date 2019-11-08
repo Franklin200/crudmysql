@@ -201,6 +201,4 @@ public class Consulta_RecyclerView extends AppCompatActivity {
     }
 
 
-
-
 }

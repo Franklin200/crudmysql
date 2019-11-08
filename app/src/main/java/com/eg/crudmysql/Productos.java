@@ -1,7 +1,6 @@
 package com.eg.crudmysql;
 
 public class Productos {
-
     int codigo;
     String descripcion;
     double precio;
